@@ -11,16 +11,6 @@ steps:
            'us-central1-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage']
   
   
-  #Update the container image using kubectl set
-  - name: 'gcr.io/cloud-builders/kubectl'
-    args:
-    - 'set'
-    - 'image'
-    - 'deployment/nginx-1'
-    - 'my-docker-repo=gcr.io/${PROJECT_ID}/my-docker-repo:v1.0'
-    env:
-    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 
   # Entrypoint, timeout and environment variables
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
