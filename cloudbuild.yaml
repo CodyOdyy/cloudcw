@@ -17,7 +17,7 @@ steps:
     - 'set'
     - 'image'
     - 'deployment/${_DEPLOYMENTNAME}'
-    - 'my-docker-repo=gcr.io/${PROJECT_ID}/my-docker-repo:${_VERSION}'
+    - 'my-docker-repo=gcr.io/${PROJECT_ID}/my-docker-repo:v1.0'
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
     - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
@@ -34,8 +34,4 @@ steps:
       - 'CLOUDSDK_COMPUTE_REGION=us-central1'
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
 
-      
-  substitutions:
-
-     # Developers ONLY change
-     _VERSION: v1.0
+     
