@@ -16,7 +16,7 @@ steps:
     args:
     - 'set'
     - 'image'
-    - 'deployment/${_DEPLOYMENTNAME}'
+    - 'deployment/my-docker-app'
     - 'my-docker-repo=gcr.io/${PROJECT_ID}/my-docker-repo:v1.0'
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
