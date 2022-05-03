@@ -19,7 +19,7 @@ steps:
     - 'deployment/${_DEPLOYMENTNAME}'
     - 'my-docker-repo=gcr.io/${PROJECT_ID}/my-docker-repo:v1.0'
     env:
-    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
     - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 
   # Entrypoint, timeout and environment variables
