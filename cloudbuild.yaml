@@ -13,14 +13,14 @@ steps:
   
   #Update the container image using kubectl set
   - name: 'gcr.io/cloud-builders/kubectl'
-  args:
-  - 'set'
-  - 'image'
-  - 'deployment/${_DEPLOYMENTNAME}'
-  - 'my-docker-repo=gcr.io/${PROJECT_ID}/my-docker-repo:${_VERSION}'
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
+    args:
+    - 'set'
+    - 'image'
+    - 'deployment/${_DEPLOYMENTNAME}'
+    - 'my-docker-repo=gcr.io/${PROJECT_ID}/my-docker-repo:${_VERSION}'
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 
   # Entrypoint, timeout and environment variables
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -34,5 +34,8 @@ steps:
       - 'CLOUDSDK_COMPUTE_REGION=us-central1'
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
 
+      
+  substitutions:
+
      # Developers ONLY change
-    _VERSION: v1.0
+     _VERSION: v1.0
