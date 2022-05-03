@@ -20,7 +20,7 @@ server.route({
 method: 'GET',
 path: '/',
 handler: (request, h) => {
-return "Welcome to";
+return "Welcome to Stock";
 }
 });
 
