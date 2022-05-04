@@ -12,7 +12,7 @@ const con = mysql.createConnection({
 
 const init = async ()=> {
 const server = Hapi.server({
-port: 8080,
+port: 80,
 host: 'localhost'
 });
 
