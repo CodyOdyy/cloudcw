@@ -27,14 +27,14 @@ steps:
   
 substitutions:
 
-    _PROJECT_ID: celcom-it-pulse-backoffice-prd 
-    _ZONE: asia-southeast1-a
-    _GKE_CLUSTER: pulseprodcluster 
+    _PROJECT_ID: ceremonial-team-348412
+    _ZONE: asia-east1-c
+    _GKE_CLUSTER: autopilot-cluster-1
     
 
     # _DEPLOYMENTNAME: pulsebackrepo
     # _CONTAINERNAME: pulsebackrepo    
-    _REPO_NAME: pulse-api-gateway
+    
     
 
     # _VERSION: v4.0
