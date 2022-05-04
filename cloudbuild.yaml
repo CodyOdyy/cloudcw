@@ -2,24 +2,45 @@ steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 
-           'asia-east1-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage', 
+           'gcr.io/${_PROJECT_ID}/my-image:$SHORT_SHA', 
            '.']
 
   # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 
-           'asia-east1-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage']
+           'gcr.io/${_PROJECT_ID}/my-image:$SHORT_SHA']
+  
 
-  # Entrypoint, timeout and environment variables
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
-    timeout: 240s
-    args: ['compute', 'instances', 
-           'create-with-container', 'my-vm-name',
-           '--container-image', 
-           'asia-east1-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage']
-    env:
-      - 'CLOUDSDK_COMPUTE_REGION=asia-east1'
-      - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-c'
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: /bin/sh
+  args:
+    - '-c'
+    - |
+      sed "s|VAR_IMAGE|gcr.io/${_PROJECT_ID}/my-image:$SHORT_SHA|g"  kubernetes-test.yaml > kubernetes.yaml
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'kubernetes.yaml']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
+  
+substitutions:
+
+    _PROJECT_ID: celcom-it-pulse-backoffice-prd 
+    _ZONE: asia-southeast1-a
+    _GKE_CLUSTER: pulseprodcluster 
+    
+
+    # _DEPLOYMENTNAME: pulsebackrepo
+    # _CONTAINERNAME: pulsebackrepo    
+    _REPO_NAME: pulse-api-gateway
+    
+
+    # _VERSION: v4.0
+    
+options:
+    substitution_option: 'ALLOW_LOOSE'
+#mirror test
 
      
