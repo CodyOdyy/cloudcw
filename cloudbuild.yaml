@@ -13,17 +13,17 @@ steps:
 
 
   - name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: /bin/sh
-  args:
+    entrypoint: /bin/sh
+    args:
     - '-c'
     - |
       sed "s|VAR_IMAGE|gcr.io/${_PROJECT_ID}/my-image:$SHORT_SHA|g"  kubernetes-test.yaml > kubernetes.yaml
 
-- name: 'gcr.io/cloud-builders/kubectl'
-  args: ['apply', '-f', 'kubernetes.yaml']
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['apply', '-f', 'kubernetes.yaml']
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
   
 substitutions:
 
