@@ -20,6 +20,6 @@ steps:
            'asia-east1-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/myimage']
     env:
       - 'CLOUDSDK_COMPUTE_REGION=asia-east1'
-      - 'CLOUDSDK_COMPUTE_ZONE=asia-east1'
+      - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-c'
 
      
