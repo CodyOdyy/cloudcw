@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: nginx
+        color: blue
     spec:
       containers:
       - name: nginx
@@ -34,6 +35,7 @@ spec:
     targetPort: 80
   selector:
     app: nginx
+    color: blue
   type: LoadBalancer
 
   
