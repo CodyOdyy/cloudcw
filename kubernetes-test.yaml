@@ -27,7 +27,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: nginx
-  name: my-service
+  name: my-service-blue
 spec:
   ports:
   - port: 80
