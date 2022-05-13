@@ -27,8 +27,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: nginx
-    role: rolling-update
-    name: customer-service-prod
+  name: customer-service-prod
 spec:
   ports:
   - port: 8080
